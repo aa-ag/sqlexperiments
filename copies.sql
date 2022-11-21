@@ -1,6 +1,7 @@
-CREATE PROCEDURE copy_table(tbl text)
+-- https://stackoverflow.com/questions/10705616/table-name-as-a-postgresql-function-parameter
+CREATE PROCEDURE copy_tables()
 LANGUAGE SQL
 AS $$
-    CREATE TABLE tbl_backup AS
-    TABLE tbl;
+    CREATE TABLE x_backup AS
+    TABLE x_table;
 $$;
