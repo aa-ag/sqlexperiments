@@ -1,4 +1,4 @@
-COPY object(column1,column2,column3,column4)
-FROM 'fake_data_for_testing.csv'
+COPY testtable(name,phone,email,address,postalZip,region,country)
+FROM '/Users/aaronaguerrevere/Documents/projects/sqlexperiments/fake_data_for_testing.csv'
 DELIMITER ','
 CSV HEADER;
