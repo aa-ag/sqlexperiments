@@ -42,3 +42,6 @@ lib*.pc
 /Debug/
 /Release/
 /tmp_install/
+# fake data/testing data
+*.csv
+fake_data_for_testing.csv
