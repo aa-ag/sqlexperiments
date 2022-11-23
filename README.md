@@ -6,3 +6,6 @@ A repo to store & work on some sql stuff.
 
 - `brew update`
 - `brew install postgresql`
+- `brew services start postgresql@14`
+- `psql postgres`
+- `brew services stop postgresql@14`
