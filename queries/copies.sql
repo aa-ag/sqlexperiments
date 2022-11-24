@@ -5,3 +5,5 @@ CREATE TABLE testcopy AS TABLE testtable;
 \x
 
 \d+ testcopy
+
+INSERT INTO testcopy SELECT * FROM testtable;
