@@ -6,4 +6,11 @@ CREATE TABLE testcopy AS TABLE testtable;
 
 \d+ testcopy
 
-INSERT INTO testcopy SELECT * FROM testtable;
+INSERT INTO testcopy 
+(id,name,phone,email,address,postalZip,region,country)
+    SELECT *
+    FROM testtable
+    WHERE NOT EXISTS(
+        SELECT *
+        FROM testcopy
+        WHERE testcopy.email=testtable.email);
