@@ -12,5 +12,4 @@ INSERT INTO testcopy
     FROM testtable
     WHERE NOT EXISTS(
         SELECT *
-        FROM testcopy
-        WHERE testcopy.email=testtable.email);
+        FROM testcopy);
