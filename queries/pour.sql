@@ -4,6 +4,7 @@
 -- ENCODING 'UTF8'
 -- CSV HEADER;
 
+-- first, create a temporary table identical to the table you'll pour data into
 CREATE TEMP TABLE temporary_table(
     id SERIAL PRIMARY KEY,
     name TEXT,
@@ -15,11 +16,14 @@ CREATE TEMP TABLE temporary_table(
     country TEXT
 );
 
+-- second, copy data from the csv to said temporary table
 COPY temporary_table(name,phone,email,address,postalZip,region,country)
 FROM '/Users/aaronaguerrevere/Documents/projects/sqlexperiments/fake_data_for_testing.csv' 
 DELIMITER ','
 CSV HEADER;
 
+-- third, and last, insert/upsert the data copied into the temporary table into your target table
+-- query does nothing on conflicting rows, which means no dupes are created at insert
 INSERT INTO testtable(id,name,phone,email,address,postalZip,region,country)
 SELECT *
 FROM temporary_table
