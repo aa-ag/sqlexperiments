@@ -1,6 +1,16 @@
 SELECT table_name,table_catalog FROM information_schema.tables WHERE table_schema='public';
 
-CREATE TABLE testcopy AS TABLE testtable;
+-- CREATE TABLE testcopy AS TABLE testtable;
+CREATE TABLE IF NOT EXISTS testcopy(
+    id SERIAL PRIMARY KEY,
+    name TEXT,
+    phone TEXT,
+    email TEXT, 
+    address TEXT,
+    postalZip TEXT,
+    region TEXT,
+    country TEXT
+);
 
 \x
 
