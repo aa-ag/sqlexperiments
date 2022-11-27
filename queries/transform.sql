@@ -9,3 +9,6 @@ CREATE TABLE IF NOT EXISTS teststaged(
     region TEXT,
     country TEXT
 );
+
+INSERT INTO teststaged 
+(SELECT id,UPPER(name) FROM testtable)
