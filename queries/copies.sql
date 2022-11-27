@@ -23,3 +23,12 @@ INSERT INTO testcopy
     WHERE NOT EXISTS(
         SELECT *
         FROM testcopy);
+
+
+INSERT INTO testcopy 
+(SELECT * FROM testtable tt
+WHERE NOT EXISTS (
+    SELECT *
+    FROM testcopy tc
+    WHERE tc.id=tt.id
+))
