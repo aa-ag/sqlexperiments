@@ -9,3 +9,7 @@ A repo to store & work on some sql stuff.
 - `brew services start postgresql@14`
 - `psql postgres`
 - `brew services stop postgresql@14`
+
+#### Logs
+
+`\s`
