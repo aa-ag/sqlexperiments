@@ -12,4 +12,5 @@ A repo to store & work on some sql stuff.
 
 #### Logs
 
-`\s`
+- `\s`
+- `\timing`
