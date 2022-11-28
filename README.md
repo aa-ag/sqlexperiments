@@ -14,3 +14,4 @@ A repo to store & work on some sql stuff.
 
 - `\s`
 - `\timing`
+- `/usr/local/var/log/postgresql...`
