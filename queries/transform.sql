@@ -12,3 +12,6 @@ CREATE TABLE IF NOT EXISTS teststaged(
 
 INSERT INTO teststaged 
 (SELECT id,UPPER(name) FROM testtable)
+
+UPDATE teststaged
+SET name = LOWER(name)
