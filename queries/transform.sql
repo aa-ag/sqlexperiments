@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS teststaged(
 );
 
 INSERT INTO teststaged 
-(SELECT id,UPPER(name) FROM testtable)
+(SELECT id,UPPER(name),phone,email,CONCAT(address,postalZip,region,country) FROM testtable)
 
 UPDATE teststaged
 SET name = INITCAP(name)
