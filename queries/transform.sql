@@ -19,3 +19,4 @@ UPDATE teststaged
 SET name = INITCAP(name)
 
 SELECT REGEXP_REPLACE(phone,'[^0-9]+','','g') FROM testtable;
+SELECT * FROM testtable WHERE phone ILIKE '1-%';
