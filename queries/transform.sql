@@ -18,4 +18,4 @@ FROM testtable)
 UPDATE teststaged
 SET name = INITCAP(name)
 
-SELECT REGEXP_REPLACE(phone,'(\d{3})(\d{3})(\d{4})','(\1) \2-\3') phone FROM testtable;
+SELECT REGEXP_REPLACE(phone,'[^0-9]+','','g') FROM testtable;
