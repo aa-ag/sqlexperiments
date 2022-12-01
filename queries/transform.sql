@@ -20,4 +20,4 @@ SET name = INITCAP(name)
 
 SELECT REGEXP_REPLACE(phone,'[^0-9]+','','g') FROM testtable;
 SELECT * FROM testtable WHERE phone ILIKE '1-%';
-SELECT SUBSTR(phone, 2) FROM testtable WHERE phone ILIKE '1-%';
+SELECT REGEXP_REPLACE(SUBSTR(phone, 3), '\D ', '(1)2 \3') FROM testtable WHERE phone ILIKE '1-%';
