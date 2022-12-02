@@ -10,11 +10,6 @@ CREATE TABLE IF NOT EXISTS teststaged(
     country TEXT
 );
 
-INSERT INTO teststaged 
-(SELECT id,UPPER(name),phone,email,
-CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address
-FROM testtable)
-
 UPDATE teststaged
 SET name = INITCAP(name)
 
@@ -37,3 +32,13 @@ SET phone = REGEXP_REPLACE(
     ),
     '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3'
 ) WHERE phone ILIKE '1-%';
+
+INSERT INTO teststaged (
+    SELECT
+        id,
+        INITCAP(name),
+        phone,
+        email,
+        CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address
+    FROM testtable
+)
