@@ -38,7 +38,7 @@ INSERT INTO teststaged (
         id,
         INITCAP(name),
         CASE
-            WHEN phone phone ILIKE '1-%' THEN REGEXP_REPLACE(
+            WHEN phone ILIKE '1-%' THEN REGEXP_REPLACE(
                 REGEXP_REPLACE(
                     SUBSTR(phone, 3),'[^0-9]+','','g'),
                 '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3')
