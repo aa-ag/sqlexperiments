@@ -37,7 +37,13 @@ INSERT INTO teststaged (
     SELECT
         id,
         INITCAP(name),
-        phone,
+        CASE
+            WHEN phone phone ILIKE '1-%' THEN REGEXP_REPLACE(
+                REGEXP_REPLACE(
+                    SUBSTR(phone, 3),'[^0-9]+','','g'),
+                '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3')
+            ELSE phone
+        END,
         email,
         CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address
     FROM testtable
