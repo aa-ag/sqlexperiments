@@ -48,3 +48,6 @@ INSERT INTO teststaged (
         CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address
     FROM testtable
 )
+
+ALTER TABLE teststaged DROP COLUMN postalZip;
+ALTER TABLE teststaged DROP region,DROP country;
