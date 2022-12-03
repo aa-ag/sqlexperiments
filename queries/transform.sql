@@ -64,3 +64,18 @@ FROM (
     FROM teststaged
 ) as t
 WHERE isthere > 1;
+
+SELECT * 
+FROM teststaged
+WHERE id IN (
+    SELECT id
+    FROM (
+        SELECT 
+            id, 
+            ROW_NUMBER() OVER(
+                PARTITION BY email ORDER BY id
+            ) r
+        FROM teststaged
+    ) t 
+    WHERE t.r < 1
+);
