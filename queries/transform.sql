@@ -54,4 +54,5 @@ ALTER TABLE teststaged DROP region,DROP country;
 
 SELECT email, COUNT(*)
 FROM teststaged
-GROUP BY email;
+GROUP BY email
+HAVING COUNT(*) > 1;
