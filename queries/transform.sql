@@ -79,3 +79,10 @@ WHERE id IN (
     ) t 
     WHERE t.r < 1
 );
+
+SELECT *
+FROM teststaged a
+JOIN teststaged b
+ON a.email=b.email
+WHERE a.id > b.id
+AND a.email=b.email;
