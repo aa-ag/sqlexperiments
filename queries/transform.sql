@@ -56,3 +56,11 @@ SELECT email, COUNT(*)
 FROM teststaged
 GROUP BY email
 HAVING COUNT(*) > 1;
+
+SELECT * 
+FROM (
+    SELECT *,COUNT(1)
+    OVER (PARTITION BY email) AS isthere
+    FROM teststaged
+) as t
+WHERE isthere > 1;
