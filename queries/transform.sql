@@ -33,6 +33,7 @@ SET phone = REGEXP_REPLACE(
     '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3'
 ) WHERE phone ILIKE '1-%';
 
+-- GET DATA FROM COPY TO STAGE
 INSERT INTO teststaged (
     SELECT
         id,
@@ -48,6 +49,7 @@ INSERT INTO teststaged (
         CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address
     FROM testtable
 )
+-- GET DATA FROM COPY TO STAGE
 
 ALTER TABLE teststaged DROP COLUMN postalZip;
 ALTER TABLE teststaged DROP region,DROP country;
@@ -80,9 +82,20 @@ WHERE id IN (
     WHERE t.r < 1
 );
 
-SELECT *
+SELECT id
 FROM teststaged a
 JOIN teststaged b
 ON a.email=b.email
 WHERE a.id > b.id
 AND a.email=b.email;
+
+UPDATE teststaged
+SET email = CONCAT(email,'2')
+WHERE id IN (
+    SELECT a.id
+    FROM teststaged a
+    JOIN teststaged b
+    ON a.email=b.email
+    WHERE a.id > b.id
+    AND a.email=b.email
+);
