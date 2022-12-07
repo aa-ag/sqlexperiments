@@ -27,6 +27,8 @@ def make_fake_custom_fields():
     df3 = df1.append(df2, ignore_index=True)
     print(df3.head())
 
-    # df3.to_csv("../copy.csv")
+    df3.to_csv("../copy.csv")
 
-make_fake_custom_fields()
+
+if __name__ == "__main__":
+    make_fake_custom_fields()
