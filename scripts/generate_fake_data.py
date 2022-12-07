@@ -23,8 +23,9 @@ def make_fake_custom_fields():
         custom_fields.append(field)
         i += 1
 
-    df2 = pd.DataFrame(custom_fields,columns="custom_fields")
-    df3 = pd.concat([df1, df2], ignore_index=True)
+    df2 = pd.DataFrame(custom_fields,columns=["index","custom_fields"])
+    df3 = df1.append(df2, ignore_index=True)
+    print(df3.head())
 
     # df3.to_csv("../copy.csv")
 
