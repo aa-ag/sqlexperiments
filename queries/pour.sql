@@ -19,7 +19,8 @@ CREATE TEMP TABLE temporary_table(
 
 -- second, copy data from the csv to said temporary table
 COPY temporary_table(name,phone,email,address,postalZip,region,country,custom_fields)
-FROM '/Users/aaronaguerrevere/Documents/projects/sqlexperiments/fake_data_for_testing.csv' 
+-- FROM '/Users/aaronaguerrevere/Documents/projects/sqlexperiments/fake_data_for_testing.csv' 
+FROM '/Users/aaronaguerrevere/Documents/projects/sqlexperiments/copy.csv'
 DELIMITER ','
 CSV HEADER;
 

@@ -7,7 +7,8 @@ CREATE TABLE IF NOT EXISTS teststaged(
     address TEXT,
     postalZip TEXT,
     region TEXT,
-    country TEXT
+    country TEXT,
+    custom_fields JSONB
 );
 
 UPDATE teststaged
