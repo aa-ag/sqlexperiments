@@ -9,7 +9,8 @@ CREATE TABLE IF NOT EXISTS testcopy(
     address TEXT,
     postalZip TEXT,
     region TEXT,
-    country TEXT
+    country TEXT,
+    custom_fields JSONB
 );
 
 \x
