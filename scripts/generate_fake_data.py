@@ -9,7 +9,7 @@ def make_fake_custom_fields():
     df1 = pd.read_csv('../fake_data_for_testing.csv')
     i = 0
     custom_fields = list()
-    while i < 501:
+    while i < 500:
         field = list()
         account_manager = dict()
         account_manager["id"] = 12345
