@@ -21,7 +21,9 @@ def make_fake_custom_fields():
         cc["value"] = fake.credit_card_full()
         field.append(cc)
 
-        custom_fields.append(field)
+        custom_fields.append(
+            json.dumps(field)
+        )
         i += 1
     df2 = pd.DataFrame({"custom_fields":custom_fields})
     df3 = pd.concat([df1,df2],axis=1)
