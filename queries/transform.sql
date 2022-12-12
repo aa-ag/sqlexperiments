@@ -93,12 +93,15 @@ SELECT
 FROM Transactions
 GROUP BY month,country;
 
-SELECT REGEXP_REPLACE(
-    custom_fields::text,
-    '[\\n]+',
-    ' ',
-    'g'
-) custom_fields FROM testcopy;
+SELECT RTRIM(
+    REGEXP_REPLACE(
+        custom_fields::text,
+        '[\\n]+',
+        ' ',
+        'g'
+    )
+    , '\s+$"}]') custom_fields
+FROM testcopy;
 
 -- GET DATA FROM COPY TO STAGE
 INSERT INTO teststaged (
