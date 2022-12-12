@@ -113,7 +113,7 @@ GROUP BY month,country;
 
 SELECT REGEXP_REPLACE(
     custom_fields::text,
-    E'[\\n]+',
+    '[\\n]+',
     ' ',
     'g'
 ) custom_fields FROM testcopy;
