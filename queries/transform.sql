@@ -47,7 +47,7 @@ INSERT INTO teststaged (
             ELSE phone
         END,
         email,
-        CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address
+        CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address,
     FROM testtable
 )
 -- GET DATA FROM COPY TO STAGE
@@ -110,3 +110,10 @@ SELECT
     SUM(CASE WHEN state="approved" THEN amount ELSE 0 END) as approved_total_amount
 FROM Transactions
 GROUP BY month,country;
+
+SELECT REGEXP_REPLACE(
+    custom_fields::text,
+    E'[\\n]+',
+    ' ',
+    'g'
+) custom_fields FROM testcopy;
