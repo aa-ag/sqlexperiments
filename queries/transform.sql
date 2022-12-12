@@ -5,9 +5,6 @@ CREATE TABLE IF NOT EXISTS teststaged(
     phone TEXT,
     email TEXT, 
     address TEXT,
-    postalZip TEXT,
-    region TEXT,
-    country TEXT,
     custom_fields JSONB
 );
 
@@ -117,8 +114,7 @@ INSERT INTO teststaged (
         END,
         email,
         CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address,
-        RTRIM(
-    REGEXP_REPLACE(custom_fields::text,'[\\n]+',' ','g'), ' "}]') || '"}]' custom_fields
+        (RTRIM(REGEXP_REPLACE(custom_fields::text,'[\\n]+',' ','g'), ' "}]') || '"}]')::JSONB
     FROM testtable
-)
+);
 -- GET DATA FROM COPY TO STAGE
