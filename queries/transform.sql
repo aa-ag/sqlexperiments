@@ -34,24 +34,6 @@ SET phone = REGEXP_REPLACE(
     '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3'
 ) WHERE phone ILIKE '1-%';
 
--- GET DATA FROM COPY TO STAGE
-INSERT INTO teststaged (
-    SELECT
-        id,
-        INITCAP(name),
-        CASE
-            WHEN phone ILIKE '1-%' THEN REGEXP_REPLACE(
-                REGEXP_REPLACE(
-                    SUBSTR(phone, 3),'[^0-9]+','','g'),
-                '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3')
-            ELSE phone
-        END,
-        email,
-        CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address,
-    FROM testtable
-)
--- GET DATA FROM COPY TO STAGE
-
 ALTER TABLE teststaged DROP COLUMN postalZip;
 ALTER TABLE teststaged DROP region,DROP country;
 
@@ -117,3 +99,21 @@ SELECT REGEXP_REPLACE(
     ' ',
     'g'
 ) custom_fields FROM testcopy;
+
+-- GET DATA FROM COPY TO STAGE
+INSERT INTO teststaged (
+    SELECT
+        id,
+        INITCAP(name),
+        CASE
+            WHEN phone ILIKE '1-%' THEN REGEXP_REPLACE(
+                REGEXP_REPLACE(
+                    SUBSTR(phone, 3),'[^0-9]+','','g'),
+                '(\d{3})(\d{3})(\d{4})', '(\1) \2-\3')
+            ELSE phone
+        END,
+        email,
+        CONCAT(address,chr(10),postalZip,chr(10),region,chr(10),country) AS address,
+    FROM testtable
+)
+-- GET DATA FROM COPY TO STAGE
