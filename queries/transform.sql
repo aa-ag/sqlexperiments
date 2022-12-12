@@ -100,7 +100,7 @@ SELECT RTRIM(
         ' ',
         'g'
     )
-    , '\s+$"}]') custom_fields
+    , ' "}]') || '"}]' custom_fields
 FROM testcopy;
 
 -- GET DATA FROM COPY TO STAGE
